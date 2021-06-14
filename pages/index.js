@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import dynamic from 'next/dynamic';
-import { TODOS } from '../utils/api-endpoints';
 
+import { TODOS } from '../utils/api-endpoints';
 const TodoList = dynamic(() => import('../components/Todo/TodoList'));
 const Home = ({ todos = [] }) => {
   const [todoList, setTodoList] = useState(todos);
   const [todoInput, setTodoInput] = useState('');
+
   useEffect(() => {
     setTodoInput('');
     return () => {};
@@ -33,7 +34,7 @@ const Home = ({ todos = [] }) => {
               { _id: data.newRecordId, isDone: false, description: todoInput },
             ]);
           }
-         e.target.value = ''
+          e.target.value = '';
         });
     }
   };
@@ -51,6 +52,7 @@ const Home = ({ todos = [] }) => {
         }
       });
   };
+
   return (
     <>
       <main className="app">
